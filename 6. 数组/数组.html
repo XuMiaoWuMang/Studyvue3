@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 添加
+        console.log('添加删除:')
+        const arr = [1,2,3,4]
+        const len = arr.push(5) // 在数组末尾添加，返回新数组长度
+        console.log(arr, len)
+        const len1 = arr.unshift(0) // 在数组开头添加，返回新数组长度
+        console.log(arr, len1)
+
+        // 删除
+        const arr1 = [1,2,3,4]
+        const last = arr1.pop() // 删除数组末尾元素，返回被删除的元素
+        console.log(arr1, last)
+        const first = arr1.shift() // 删除数组开头元素，返回被删除的元素
+        console.log(arr1, first)
+
+        // 任意位置删除和添加
+        const arr2 = [1,2,3,4]
+        const deleted = arr2.splice(1, 1) // 删除并添加元素，返回被删除的元素
+        console.log(arr2, deleted)
+        const inserted = arr2.splice(1, 0, 2.5) // 删除0个元素，在索引1处添加元素
+        console.log(arr2, inserted)
+        // splice(start, deleteCount, item1, item2, ...)
+        // start：开始位置
+        // deleteCount：删除的个数
+        // item1, item2, ...：添加的元素
+
+        // 包含
+        const arr3 = [1,2,3,4]
+        console.log(arr3.includes(2)) // 判断数组是否包含某个元素，返回布尔值
+        console.log(arr3.includes(5))
+    </script>
+    <script>
+        // 数组遍历
+        console.log('遍历:')
+        // 1. for循环
+        var array = [1,2,3,4];
+        // for(var i = 0; i < arr.length; i++){
+        //     console.log(arr[i]);
+        // }
+
+        // 2. forEach
+        array.forEach((item, index, array) => {
+            console.log(item, index, array)
+        })
+        // forEach(callback)
+        //     callback: 回调函数
+        //     无返回值
+        // callback(item, index, array) 可缺省
+        //     item: 数组中的每一项
+        //     index: 数组中每一项的索引
+        //     array: 原数组
+    </script>
+    <script>
+        // 筛选过滤
+        console.log('筛选:')
+        var array1 = [1,2,3,4];
+        // 留下偶数
+        // const evenarry = array1.filter((item, index, array) => {
+        //     if( item % 2 === 0){
+        //         return true
+        //     }else{
+        //         return false
+        //     }
+        // })
+        // 简写
+        // filter会返回一个新数组，原数组不变
+        const evenarry = array1.filter((item, index, array) => item % 2 === 0)
+        console.log(evenarry) 
+    </script>
+    <script>
+        // 映射
+        console.log('映射:')
+        var array2 = [1,2,3,4];
+        // map会返回一个新数组，原数组不变
+        const doubleArr = array2.map((item, index, array) => item * 2)
+        console.log(doubleArr)
+
+        // 需求：得到一个对象数组
+        const arrayObj = array2.map((value, index)=>({index, value}))// 返回对象时，需要加小括号
+        console.log(arrayObj)
+    </script>
+    <script>
+        // 检测
+        console.log('检测:')
+        var array3 = [1,2,3,4];
+        // const ret = array3.every((item, index) => {
+        //     console.log(item, index, array3) 
+        //     return true
+        // })
+        // console.log(ret)
+
+        // e.g.1：检测array3中是否都是奇数
+        let ret = array3.every((item, index) => item % 2 === 1)
+        console.log(ret)
+        const mainArr = array3.map((item, index) => item = item * 2 + 1)
+        console.log(mainArr)
+        ret = mainArr.every((item, index) => item % 2 === 1)
+        console.log(ret)
+
+        // e.g.2: 检测array3是否都小于2
+        ret = array3.every((item, index) => {
+            console.log(index)// 打印两次
+            return item < 2
+        })
+        console.log(ret)
+    </script>
+    <script>
+        // 汇总
+        console.log('汇总:')
+        var array4 = [1,2,3,4];
+        const sum = array4.reduce((prev, item, index) => prev + item, 0)
+        console.log(sum)
+
+        // 需求：对象数组的和
+        let arrayObj1 = [ 
+            { name: '张三', age: 18 },
+            { name: '李四', age: 20 },
+            { name: '王五', age: 22 },
+        ]
+        const sum1 = arrayObj1.reduce((prev, item, index) => prev + item.age, 0)
+        console.log(sum1)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //扩展运算符
+        //用途1: 复制数组或对象
+
+        const arr1 = [1,2,3]
+        const arr2 = arr1
+
+        arr2.push(4)
+        console.log(arr1)
+        // 由于数组是引用类型，所以arr1和arr2会指向同一个数组，当arr2改变时，所以arr1也会改变
+        // 在c语言中，可以理解为arr1和arr2的类型是数组指针
+
+        const arr3 = [...arr1]
+        arr3.push(5)
+        console.log(arr1)
+        // 此处的赋值才是复制，arr3和arr1指向不同的数组，所以arr3改变时，arr1不会改变，互相独立
+
+        // 同理，对象也是引用类型，所以复制对象时，也需要使用扩展运算符
+        const obj1 = {name:'zhangsan',age:18}
+        const obj2 = {...obj1}
+        obj2.name = 'lisi'
+        console.log(obj1)
+
+        //用途2: 合并数组或对象
+        const arr4 = [...arr1,...arr3]
+        console.log(arr4)
+
+        const obj3 = {age:20, sex:'男'}
+        const obj4 = {...obj1,...obj3}
+        console.log(obj4)
+    </script>
+</body>
+</html>

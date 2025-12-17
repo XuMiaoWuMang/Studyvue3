@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 普通字符串
+        // 1.使用单引号或双引号来创建普通字符串
+        const str = 'hello';
+        console.log(str);
+        // 2.普通字符串能包含换行符
+        const str1 = '\nworld';
+        console.log(str1);
+
+        // 3.字符串可以使用+来拼接
+        const str2 = str + str1;// 拼接字符串
+        console.log(str2)
+
+        // 模板字符串
+        // 1.使用反引号``来创建模板字符串
+        const str3 = `hello world`;
+        console.log(str3);
+
+        // 2.模板字符串可以包含占位符，占位符使用${}来表示
+        const name = '张三';
+        const age = 18;
+        const str4 = `我叫${name}，今年${age}岁`; //模板字符串0不用+号拼接，使用占位符
+        console.log(str4);
+
+        // 3.模板字符串可以包含多行文本
+        const str5 = `
+        hello
+world
+        `;
+        console.log(str5);// 注意：模板字符串的制表符(\t)和换行(\n)会被保留
+
+    </script>
+</body>
+</html>

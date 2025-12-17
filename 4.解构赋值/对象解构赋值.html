@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 普通的对象赋值
+        // var obj = {
+        //     name: '张三',
+        //     age: 18,
+        //     sex: '男'
+        // }
+        // var name = obj.name;
+        // var age = obj.age;
+        // var sex = obj.sex;
+        // console.log(name, age, sex);
+
+        // 对象解构赋值
+        var obj = {
+            name: '张三',
+            age: 20,
+            sex: '男'
+        }
+        // 冒号左边是对象的属性名，右边是变量名
+        var {age: age1, name: name1, sex: sex1} = obj;
+        console.log(age1, name1, sex1);
+
+        // 若变量名和属性名一样，则可以简写
+        var {age, name, sex} = obj;
+        console.log(age, name, sex);
+
+        var {name, age, x} = obj;
+        console.log(name, age, x);// 若不存在对应的属性，则为undefined
+
+        var {name, ...ret} = obj;
+        console.log(name, ret);
+
+    </script>
+</body>
+</html>

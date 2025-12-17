@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对象
+        // 对象是属性的无序集合，每个属性都有一个名字和值，属性名和属性值之间用冒号分隔，属性之间用逗号分隔
+        // 对象的属性名可以是字符串或者符号，属性值可以是任意类型
+        let obj = {
+            name: '张三',
+            age: 18,
+            gender: '男',
+        }
+
+        // 使用点访问属性
+        console.log(obj.name); // 张三
+
+        // 使用中括号访问属性
+        console.log(obj['name']); // 张三
+
+        // 注意当属性名存储在变量中，只能使用中括号访问，不能使用点访问
+        let a = 'name'
+        console.log(obj[a]); // 张三
+        console.log(obj['a']); // 注意：若访问的属性不存在，返回undefined
+
+        let name = '李四'
+        let age = 20
+        let gender = '女'
+        let obj2 = {
+            name,
+            age,
+            gender
+        }
+        console.log(obj2); // {name: "李四", age: 20, gender: "女"}
+    </script>
+    <script>
+        // 遍历对象
+        const obj1 = {
+            name: '张三',
+            age: 18,
+            gender: '男',
+        }
+        // 以前遍历对象： for...in循环
+        for(let key in obj1){
+            console.log(key, obj1[key]); 
+        }
+
+        // ES6新增的遍历对象的方法：Object.keys() + forEach()
+        // Object.keys()方法返回一个包含对象所有可枚举属性名的字符串数组
+        console.log('对象的keys方法');
+        console.log(Object.keys(obj1)); // ["name", "age", "gender"]
+        Object.keys(obj1).forEach(key => {
+            console.log(key, obj1[key]);
+        })
+        
+        // e.g.1 ： 只遍历以a开头的属性
+        Object
+            .keys(obj1)
+            .filter(key => key.startsWith('a'))
+            .forEach(key => {
+                console.log(key, obj1[key]);
+            })
+
+
+        console.log('对象的values方法');
+    </script>
+</body>
+</html>

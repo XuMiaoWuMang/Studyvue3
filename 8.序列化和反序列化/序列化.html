@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 序列化：将对象转换为json格式字符串
+        // json格式：是一种严格的对象表示法。主要体现在属性名必须用双引号，字符串类型必须用双引号。
+
+        const obj1 = {
+            name: '张三',
+            age: 18,
+            gender: '男'
+        }
+        const json = {
+            "name": '张三',
+            'age': 18,
+            gender: "男"
+        }
+        // const json = `{"name": '张三','age': 18,gender: "男"}`
+        console.log(JSON.stringify(obj1))
+
+        // 反序列化：将json格式字符串转换为对象
+        const obj2 = JSON.parse(JSON.stringify(obj1))
+        console.log(obj2)
+    </script>
+
+</body>
+</html>

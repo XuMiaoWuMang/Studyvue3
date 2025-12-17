@@ -1,2 +1,4 @@
-# Studyvue3
-how to study vue3 but so slow，need patience。
+
+
+
+1. 变量和常量：变量和常量的声明，以及它们的使用方式。

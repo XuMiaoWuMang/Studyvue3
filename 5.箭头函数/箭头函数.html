@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 箭头函数: 普通函数的一种简写，写法更简洁
+        function fn(){
+            // code
+            // return 结果
+        }
+        // 普通函数的使用
+        const func = fn()
+            
+        // 匿名函数的使用
+        const fn1 = function(){
+            // code
+            // return 结果
+        }
+
+        // 箭头函数的语法
+        const fn2 = (参数列表) => {
+            // code
+            // return 结果
+        }
+        // 箭头函数的应用
+        const add = (a, b) => {
+            return a + b
+        }
+        const ret = add(1, 2)
+        console.log(ret)
+
+        // 箭头函数的特性
+        // 1. 当参数只有一个的时候，可以省略小括号
+        // const print = (msg) => {
+        //     console.log(msg)
+        // }
+        // 或者
+        const print = msg => {
+            console.log(msg)
+        }
+
+        print('hello')
+
+        // 2. 当函数体只有一行代码的时候，可以省略大括号和return
+        const add1 = (a, b) => a + b
+        console.log(add1(2, 3))
+
+        // 3. 当返回一个对象的时候，需要用小括号包裹起来
+        const obj = () => {
+            return {name: '张三', age: 18}
+        }
+        console.log(obj())
+
+        const obj1 = () => ({name: '张三', age: 18})
+        console.log(obj1())
+
+        // 作为回调函数使用,setTimeout的第一个参数需要传一个函数，这个函数就是回调函数
+        setTimeout(() => {
+            console.log('hello')
+         }, 1000)
+    </script>
+</body>
+</html>

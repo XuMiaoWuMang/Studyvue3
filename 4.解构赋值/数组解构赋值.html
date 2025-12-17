@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 普通的赋值
+        const arr = [1,2,3];
+        let a = arr[0];
+        let b = arr[1];
+        let c = arr[2];
+        console.log(a,b,c);
+        
+        // 结构赋值
+        const [a1,b1,c1] = arr;
+        console.log(a1,b1,c1);
+
+        // 将arr中间的值赋值给变量d
+        const [, d] = arr;
+        console.log(d);
+
+        // 将arr左右两边的值赋值给变量e,f
+        const [e, ,f] = arr;
+        console.log(e,f);
+
+        // 将arr的第一个值赋值给变量g，剩余的值赋值给变量ret
+        const [g, ...ret] = arr;
+        console.log(g,ret);
+
+        // 将嵌套数组里的值复制给变量h,i,j
+        const [h,[i,j]] = [1,[2,3]];
+        console.log(h,i,j);
+    </script>
+</body>
+</html>
