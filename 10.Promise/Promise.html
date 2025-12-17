@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 为什么需要Promise？
+
+        // 同步代码：串行执行，前面的代码先执行，后面的代码后执行
+        // 异步代码：并行执行，所有的代码同时开始执行，但是有的代码会先执行完，有的代码会后执行完
+
+        // eg1: 延迟2秒输出1，再延迟1秒输出2，再延迟1秒输出3
+
+        // setTimeout(() => {
+        //     console.log(1)
+        // }, 2000)
+        // setTimeout(() => {
+        //     console.log(2)
+        // }, 1000)
+        // setTimeout(() => {
+        //     console.log(3)
+        // }, 1000)
+        // 输出：2 3 1
+        // 很明显，不是这么做的
+        // 因为setTimeout是异步的，所以相当于所有定时器同时启动，第二个和第三个只有1秒，所以会先输出2 3或者3 2，最后再输出1
+
+        setTimeout(() => {
+            console.log(1)
+            setTimeout(() => {
+                console.log(2)
+                setTimeout(() => {
+                    console.log(3)
+                }, 1000)
+            }, 1000)
+        }, 2000)
+        // 输出：1 2 3
+        // 这样虽然可以，但是当程序需要的定时器越来越多时，嵌套会越来越多，代码可读性差，维护困难
+        // 这就是回调地狱，即疯狂嵌套回调函数
+        // 为了消除回调地狱，Promise应运而生
+    </script>
+    <script>
+        // 2. Promise是什么？
+        // Promise是JS新增的一个类，用来解决异步嵌套的问题，通过异步成功和失败来决定Promise的状态是成功还是失败。
+        // Promise支持链式调用，解决了回调地狱的问题
+        // Promise有三种状态：pending（等待态）、fulfilled（成功态）、rejected（失败态）
+        // Promise的状态一旦确定，就不可更改。并且状态切换只有两种：
+        // pending（等待态） -> fulfilled（成功态）
+        // pending（等待态） -> rejected（失败态）
+
+        // 3. 如何使用Promise？
+
+        const p = new Promise((resolve, reject) => {
+            // 在这里进行异步操作：定时器，ajax请求等
+            // 异步操作成功，调用resolve函数，将Promise状态改为成功态
+            // 异步操作失败，调用reject函数，将Promise状态改为失败态
+            setTimeout(() => {
+                // 调用resolve函数，将Promise状态改为成功态，说明Promise成功
+
+                // resolve('OK!!!')
+                reject('NO!!!') 
+            }, 0)
+        })
+        p.then((msg) => {
+            console.log('成功了捏', msg)
+        }, (err) => {
+            console.log('失败了捏', err)
+        }
+        )
+    </script>
+
+    <script>
+        // 使用Promise消除上述回调地狱
+        // 这样，程序就会同步执行，等待2秒后输出1，再等待1秒输出2，再等待1秒输出3
+        function delay(delayTime, msg) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(msg)
+                }, delayTime)
+            })
+        }
+
+        delay(2000, 1)
+            .then((msg) => {
+                console.log(msg)
+                return delay(1000, 2)
+            })
+            .then((msg) => {
+                console.log(msg)
+                return delay(1000, 3)
+            })
+            .then((msg) => {
+                console.log(msg)
+            })
+        
+
+    </script>
+</body>
+
+</html>

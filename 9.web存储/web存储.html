@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // web存储：相当于一个本地数据库，不超过5MB即可
+        // 存储有两种方式：localStorage和sessionStorage
+        // localStorage：永久存储，除非手动删除
+        // sessionStorage：会话存储，关闭浏览器即删除
+        
+        const tmp = {
+            name:'张三',
+            age:18
+        }
+
+        // 存
+        // 注意：如果要在本地存储对象或者数组，则需要先进行序列化
+        localStorage.setItem('name','张三')
+        localStorage.setItem('age',JSON.stringify(tmp))
+        sessionStorage.setItem('name1','李四')
+        console.log("已存入name，age和name1")
+        // 取
+        // 如果key存在，则取出对应的数据，如果不存在，则返回null(表示key不存在)
+        console.log("正在取出...")
+        console.log(localStorage.getItem('name'))
+        console.log(sessionStorage.getItem('name1'))
+        // 如果取出一个对象或数组，则需要反序列化
+        console.log(JSON.parse(localStorage.getItem('age')))
+
+        // 删
+        localStorage.removeItem('name')
+        sessionStorage.removeItem('name1')
+        localStorage.clear()
+        console.log("已删除name和name1，已清空localStorage")
+    </script>
+
+</body>
+</html>
